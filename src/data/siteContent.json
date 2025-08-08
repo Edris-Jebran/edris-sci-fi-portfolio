@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "name": "Edris Jebran",
+    "tagline": "Software Engineer \u2022 AI/ML Enthusiast",
+    "cta": "View CV"
+  },
+  "about": {
+    "summary": "I build modern, reliable software and explore AI/ML to solve real-world problems.",
+    "location": "Toronto, Canada"
+  },
+  "experience": [
+    {
+      "role": "SDE 2",
+      "company": "Amazon \u2014 AFT",
+      "period": "Apr 2022 \u2014 Present",
+      "highlights": [
+        "Designed and shipped scalable services for fulfillment tech",
+        "Mentored engineers and led cross-team delivery"
+      ]
+    },
+    {
+      "role": "Software Developer",
+      "company": "NoviFlow",
+      "period": "Jan 2021 \u2014 Apr 2022",
+      "highlights": [
+        "Built high-performance networking/cybersecurity systems"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Eng., Computer Engineering",
+      "school": "McGill University",
+      "period": "\u2014",
+      "details": [
+        "Courses: ML, CV, AI, Networking, Cybersecurity"
+      ]
+    }
+  ],
+  "hobbies": [
+    {
+      "name": "Grappling",
+      "desc": "Brazilian Jiu Jitsu & competition."
+    },
+    {
+      "name": "AI/ML",
+      "desc": "Learning, prototyping, model tinkering."
+    },
+    {
+      "name": "Fitness",
+      "desc": "Strength & conditioning."
+    }
+  ],
+  "socials": {
+    "email": "mailto:hello@edrisjebran.com",
+    "linkedin": "https://www.linkedin.com/in/edrisjebran",
+    "github": "https://github.com/edris-jebran"
+  },
+  "cv": {
+    "downloadUrl": "/cv/edris-jebran-cv.pdf"
+  }
+}

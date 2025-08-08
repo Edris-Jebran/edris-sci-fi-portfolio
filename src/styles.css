@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #050B16;
+}
+
+html, body, #root { height: 100%; }
+
+.bg-space { background-color: var(--bg); }
+
+/* Sci-fi glow helpers */
+.glow { text-shadow: 0 0 8px rgba(0,240,255,0.9); }
+.card { background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; }
+.section { max-width: 72rem; margin: 0 auto; padding: 5rem 1.5rem; }
+
+/* Futuristic scanline overlay (subtle) */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 240, 255, 0.02),
+    rgba(0, 240, 255, 0.02) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* Accent link focus ring */
+a:focus-visible { outline: 2px solid theme('colors.primary'); outline-offset: 2px; }
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .section { padding: 3rem 1rem; }
+  .card { padding: 1rem; }
+}
+
+/* Enhanced button hover effects */
+.btn-sci-fi {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-sci-fi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,240,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-sci-fi:hover::before {
+  left: 100%;
+}
