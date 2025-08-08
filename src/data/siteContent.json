@@ -1,7 +1,7 @@
 {
   "hero": {
     "name": "Edris Jebran",
-    "tagline": "Software Engineer \u2022 AI/ML Enthusiast",
+    "tagline": "Software Engineer • AI/ML Enthusiast",
     "cta": "View CV"
   },
   "about": {
@@ -11,17 +11,16 @@
   "experience": [
     {
       "role": "SDE 2",
-      "company": "Amazon \u2014 AFT",
-      "period": "Apr 2022 \u2014 Present",
+      "company": "Amazon — AFT",
+      "period": "Apr 2022 — Present",
       "highlights": [
-        "Designed and shipped scalable services for fulfillment tech",
-        "Mentored engineers and led cross-team delivery"
+        "Designed and shipped scalable services for fulfillment tech"
       ]
     },
     {
       "role": "Software Developer",
       "company": "NoviFlow",
-      "period": "Jan 2021 \u2014 Apr 2022",
+      "period": "Jan 2021 — Apr 2022",
       "highlights": [
         "Built high-performance networking/cybersecurity systems"
       ]
@@ -31,7 +30,7 @@
     {
       "degree": "B.Eng., Computer Engineering",
       "school": "McGill University",
-      "period": "\u2014",
+      "period": "—",
       "details": [
         "Courses: ML, CV, AI, Networking, Cybersecurity"
       ]
