@@ -1,5 +1,5 @@
-import React, { Suspense, useMemo } from 'react'
-import { Canvas } from '@react-three/fiber'
+import React, { Suspense, useMemo, useRef } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { Stars } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import content from '../data/siteContent.json'
@@ -42,30 +42,142 @@ function Starfield() {
   )
 }
 
-// Simple holographic sphere with scanline material
+// Interactive holographic sphere with mouse tracking and rotation
 function HoloSphere() {
+  const meshRef = useRef()
+  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
+  const [hovered, setHovered] = React.useState(false)
+
+  // Handle mouse movement
+  React.useEffect(() => {
+    const handleMouseMove = (event) => {
+      const { clientX, clientY } = event
+      const { innerWidth, innerHeight } = window
+      setMousePosition({
+        x: (clientX / innerWidth) * 2 - 1,
+        y: -(clientY / innerHeight) * 2 + 1
+      })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  // Animate sphere rotation and effects
+  useFrame((state) => {
+    if (meshRef.current) {
+      // Continuous rotation
+      meshRef.current.rotation.x += 0.005
+      meshRef.current.rotation.y += 0.01
+      
+      // Mouse-responsive rotation
+      meshRef.current.rotation.x += mousePosition.y * 0.1
+      meshRef.current.rotation.y += mousePosition.x * 0.1
+      
+      // Pulse effect when hovered
+      if (hovered) {
+        meshRef.current.scale.setScalar(1.1)
+      } else {
+        meshRef.current.scale.setScalar(1)
+      }
+    }
+  })
+
   return (
-    <mesh position={[0, 0, 0]}>
+    <mesh 
+      ref={meshRef}
+      position={[0, 0, 0]}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
+    >
       <sphereGeometry args={[0.75, 64, 64]} />
       <meshStandardMaterial
-        color="#00F0FF"
+        color={hovered ? "#00FFFF" : "#00F0FF"}
         roughness={0.2}
         metalness={0.9}
-        emissive="#00F0FF"
-        emissiveIntensity={0.2}
+        emissive={hovered ? "#00FFFF" : "#00F0FF"}
+        emissiveIntensity={hovered ? 0.4 : 0.2}
         wireframe
       />
     </mesh>
   )
 }
 
-// Background grid plane to add futuristic depth
+// Interactive grid horizon that responds to mouse
 function GridHorizon() {
+  const meshRef = useRef()
+  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
+
+  React.useEffect(() => {
+    const handleMouseMove = (event) => {
+      const { clientX, clientY } = event
+      const { innerWidth, innerHeight } = window
+      setMousePosition({
+        x: (clientX / innerWidth) * 2 - 1,
+        y: -(clientY / innerHeight) * 2 + 1
+      })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  useFrame(() => {
+    if (meshRef.current) {
+      // Subtle grid movement based on mouse
+      meshRef.current.rotation.x = -Math.PI / 2.2 + mousePosition.y * 0.1
+      meshRef.current.rotation.z = mousePosition.x * 0.05
+    }
+  })
+
   return (
-    <mesh rotation={[ -Math.PI / 2.2, 0, 0 ]} position={[0, -0.9, -1]}>
+    <mesh ref={meshRef} rotation={[ -Math.PI / 2.2, 0, 0 ]} position={[0, -0.9, -1]}>
       <planeGeometry args={[8, 6, 32, 32]} />
       <meshBasicMaterial color="#0A1E2E" wireframe />
     </mesh>
+  )
+}
+
+// Floating particles around the sphere
+function Particles() {
+  const particlesRef = useRef()
+  const particles = useMemo(() => {
+    const temp = []
+    for (let i = 0; i < 50; i++) {
+      const time = Math.random() * 100
+      const factor = Math.random() * 20 + 10
+      const speed = Math.random() * 0.01
+      const x = Math.random() * 2 - 1
+      const y = Math.random() * 2 - 1
+      const z = Math.random() * 2 - 1
+      temp.push({ time, factor, speed, x, y, z })
+    }
+    return temp
+  }, [])
+
+  useFrame((state) => {
+    if (particlesRef.current) {
+      particles.forEach((particle, i) => {
+        particle.time += particle.speed
+        const mesh = particlesRef.current.children[i]
+        if (mesh) {
+          mesh.position.x = Math.sin(particle.time) * particle.factor * particle.x
+          mesh.position.y = Math.cos(particle.time) * particle.factor * particle.y
+          mesh.position.z = Math.sin(particle.time) * particle.factor * particle.z
+        }
+      })
+    }
+  })
+
+  return (
+    <group ref={particlesRef}>
+      {particles.map((particle, i) => (
+        <mesh key={i} position={[particle.x, particle.y, particle.z]}>
+          <sphereGeometry args={[0.02, 8, 8]} />
+          <meshBasicMaterial color="#00F0FF" transparent opacity={0.6} />
+        </mesh>
+      ))}
+    </group>
   )
 }
 
@@ -93,6 +205,7 @@ export default function HeroSection() {
             <directionalLight position={[2, 2, 3]} intensity={0.8} />
             <HoloSphere />
             <GridHorizon />
+            <Particles />
           </Canvas>
         </ThreeJSErrorBoundary>
       )}
