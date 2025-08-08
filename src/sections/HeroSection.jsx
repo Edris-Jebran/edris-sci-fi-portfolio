@@ -66,17 +66,17 @@ function HoloSphere() {
   // Animate sphere rotation and effects
   useFrame((state) => {
     if (meshRef.current) {
-      // Continuous rotation
-      meshRef.current.rotation.x += 0.005
-      meshRef.current.rotation.y += 0.01
+      // Continuous rotation (slower)
+      meshRef.current.rotation.x += 0.002
+      meshRef.current.rotation.y += 0.005
       
-      // Mouse-responsive rotation (more pronounced)
-      meshRef.current.rotation.x += mousePosition.y * 0.2
-      meshRef.current.rotation.y += mousePosition.x * 0.2
+      // Mouse-responsive rotation (much more subtle)
+      meshRef.current.rotation.x += mousePosition.y * 0.05
+      meshRef.current.rotation.y += mousePosition.x * 0.05
       
       // Pulse effect when hovered
       if (hovered) {
-        meshRef.current.scale.setScalar(1.2)
+        meshRef.current.scale.setScalar(1.15)
       } else {
         meshRef.current.scale.setScalar(1)
       }
@@ -84,22 +84,35 @@ function HoloSphere() {
   })
 
   return (
-    <mesh 
-      ref={meshRef}
-      position={[0, 0, 0]}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-    >
-      <sphereGeometry args={[0.75, 32, 32]} />
-      <meshStandardMaterial
-        color={hovered ? "#00FFFF" : "#00F0FF"}
-        roughness={0.2}
-        metalness={0.9}
-        emissive={hovered ? "#00FFFF" : "#00F0FF"}
-        emissiveIntensity={hovered ? 0.6 : 0.2}
-        wireframe
-      />
-    </mesh>
+    <group>
+      {/* Glow effect */}
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[0.85, 16, 16]} />
+        <meshBasicMaterial 
+          color="#00F0FF" 
+          transparent 
+          opacity={hovered ? 0.2 : 0.05}
+        />
+      </mesh>
+      
+      {/* Main sphere */}
+      <mesh 
+        ref={meshRef}
+        position={[0, 0, 0]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+      >
+        <sphereGeometry args={[0.75, 32, 32]} />
+        <meshStandardMaterial
+          color={hovered ? "#00FFFF" : "#00F0FF"}
+          roughness={0.2}
+          metalness={0.9}
+          emissive={hovered ? "#00FFFF" : "#00F0FF"}
+          emissiveIntensity={hovered ? 0.6 : 0.2}
+          wireframe
+        />
+      </mesh>
+    </group>
   )
 }
 
