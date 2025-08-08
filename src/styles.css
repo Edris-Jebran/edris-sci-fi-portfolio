@@ -59,3 +59,99 @@ a:focus-visible { outline: 2px solid theme('colors.primary'); outline-offset: 2p
 .btn-sci-fi:hover::before {
   left: 100%;
 }
+
+/* Enhanced card hover effects */
+.card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,240,255,0.1), transparent);
+  transition: left 0.6s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,240,255,0.15);
+  border-color: rgba(0,240,255,0.3);
+}
+
+/* Typing animation for hero text */
+.typing-animation {
+  overflow: hidden;
+  border-right: 2px solid #00F0FF;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #00F0FF; }
+}
+
+/* Floating animation for particles */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow effect */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(0,240,255,0.5); }
+  50% { box-shadow: 0 0 20px rgba(0,240,255,0.8); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Enhanced navigation hover effects */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00F0FF, #A020F0);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Grid background effect */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(0,240,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,240,255,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}

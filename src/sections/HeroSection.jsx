@@ -229,7 +229,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="font-display text-4xl sm:text-6xl font-bold glow"
+          className="font-display text-4xl sm:text-6xl font-bold glow typing-animation"
         >
           {content.hero.name}
         </motion.h1>
@@ -237,13 +237,18 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="mt-4 text-lg text-slate-300"
+          className="mt-4 text-lg text-slate-300 float-animation"
         >
           {content.hero.tagline}
         </motion.p>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.0, delay: 0.2 }} className="mt-10 flex gap-4">
-          <a href="#experience" className="btn-sci-fi px-5 py-3 rounded-lg bg-primary/20 border border-primary/40 hover:shadow-neon transition">Explore</a>
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 1.0, delay: 0.2 }} 
+          className="mt-10 flex gap-4"
+        >
+          <a href="#experience" className="btn-sci-fi px-5 py-3 rounded-lg bg-primary/20 border border-primary/40 hover:shadow-neon transition pulse-glow">Explore</a>
           {/* <a href={content.cv.downloadUrl} className="btn-sci-fi px-5 py-3 rounded-lg border border-white/20 hover:border-primary/60 transition">Download CV</a> */}
         </motion.div>
       </div>
