@@ -45,6 +45,7 @@ function Starfield() {
 // Interactive holographic sphere with mouse tracking and rotation
 function HoloSphere() {
   const meshRef = useRef()
+  const glowRef = useRef()
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
   const [hovered, setHovered] = React.useState(false)
 
@@ -70,36 +71,55 @@ function HoloSphere() {
       meshRef.current.rotation.x += 0.005
       meshRef.current.rotation.y += 0.01
       
-      // Mouse-responsive rotation
-      meshRef.current.rotation.x += mousePosition.y * 0.1
-      meshRef.current.rotation.y += mousePosition.x * 0.1
+      // Mouse-responsive rotation (more pronounced)
+      meshRef.current.rotation.x += mousePosition.y * 0.2
+      meshRef.current.rotation.y += mousePosition.x * 0.2
       
       // Pulse effect when hovered
       if (hovered) {
-        meshRef.current.scale.setScalar(1.1)
+        meshRef.current.scale.setScalar(1.2)
+        if (glowRef.current) {
+          glowRef.current.scale.setScalar(1.5)
+        }
       } else {
         meshRef.current.scale.setScalar(1)
+        if (glowRef.current) {
+          glowRef.current.scale.setScalar(1)
+        }
       }
     }
   })
 
   return (
-    <mesh 
-      ref={meshRef}
-      position={[0, 0, 0]}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-    >
-      <sphereGeometry args={[0.75, 64, 64]} />
-      <meshStandardMaterial
-        color={hovered ? "#00FFFF" : "#00F0FF"}
-        roughness={0.2}
-        metalness={0.9}
-        emissive={hovered ? "#00FFFF" : "#00F0FF"}
-        emissiveIntensity={hovered ? 0.4 : 0.2}
-        wireframe
-      />
-    </mesh>
+    <group>
+      {/* Glow effect */}
+      <mesh ref={glowRef} position={[0, 0, 0]}>
+        <sphereGeometry args={[0.85, 32, 32]} />
+        <meshBasicMaterial 
+          color="#00F0FF" 
+          transparent 
+          opacity={hovered ? 0.3 : 0.1}
+        />
+      </mesh>
+      
+      {/* Main sphere */}
+      <mesh 
+        ref={meshRef}
+        position={[0, 0, 0]}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+      >
+        <sphereGeometry args={[0.75, 64, 64]} />
+        <meshStandardMaterial
+          color={hovered ? "#00FFFF" : "#00F0FF"}
+          roughness={0.2}
+          metalness={0.9}
+          emissive={hovered ? "#00FFFF" : "#00F0FF"}
+          emissiveIntensity={hovered ? 0.6 : 0.2}
+          wireframe
+        />
+      </mesh>
+    </group>
   )
 }
 
@@ -200,7 +220,7 @@ export default function HeroSection() {
       {/* r3f holographic scene */}
       {!prefersReduced && (
         <ThreeJSErrorBoundary>
-          <Canvas camera={{ position: [0, 0, 2.2] }} className="absolute inset-0 pointer-events-none -z-10">
+          <Canvas camera={{ position: [0, 0, 2.2] }} className="absolute inset-0 -z-10">
             <ambientLight intensity={0.6} />
             <directionalLight position={[2, 2, 3]} intensity={0.8} />
             <HoloSphere />
