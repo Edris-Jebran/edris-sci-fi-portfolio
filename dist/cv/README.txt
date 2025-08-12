@@ -1,1 +1,0 @@
-Place your final CV as 'edris-jebran-cv.pdf'.
