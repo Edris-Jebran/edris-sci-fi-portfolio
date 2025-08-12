@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edris Jebran - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            font-size: 1.1em;
+            color: #555;
+        }
+        
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .experience-item, .education-item, .project-item {
+            margin-bottom: 20px;
+        }
+        
+        .experience-header, .education-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .role-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+        
+        .company {
+            font-weight: 600;
+            color: #34495e;
+        }
+        
+        .period {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .highlights {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .highlights li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .highlights li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .skill-category h3 {
+            font-size: 1em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .skill-list {
+            color: #555;
+            font-size: 0.95em;
+        }
+        
+        .project-tech {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                max-width: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Edris Jebran</h1>
+        <div class="contact-info">
+            Toronto, ON • <a href="mailto:edrisjebran@hotmail.com">edrisjebran@hotmail.com</a> • 
+            GitHub: <a href="https://github.com/Edris-Jebran">github.com/Edris-Jebran</a> • 
+            Website: <a href="https://edrisjebran.com/">edrisjebran.com</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Summary</h2>
+        <div class="summary">
+            Software Development Engineer II with 4+ years' experience (3+ years on AWS/Amazon stack) building reliable, scalable systems. Impact across Amazon Fulfillment Technologies (safety tooling) and SDN/cybersecurity (NoviFlow). Strengths in distributed/event-driven design, clean code, and production ownership. Passionate about AI/ML and innovative problem-solving.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="skill-list">Java, Python, C/C++, JavaScript</div>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks</h3>
+                <div class="skill-list">React, Django, PyTorch</div>
+            </div>
+            <div class="skill-category">
+                <h3>AWS Services</h3>
+                <div class="skill-list">Lambda, API Gateway, SQS, SNS, DynamoDB, S3, Fargate, IAM, CloudWatch</div>
+            </div>
+            <div class="skill-category">
+                <h3>Operations</h3>
+                <div class="skill-list">CI/CD, Testing, On-call, SLIs/SLOs</div>
+            </div>
+            <div class="skill-category">
+                <h3>Data & Tools</h3>
+                <div class="skill-list">SQL, OpenCV, CUDA, Git</div>
+            </div>
+            <div class="skill-category">
+                <h3>Platforms</h3>
+                <div class="skill-list">Linux/UNIX, Windows</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Experience</h2>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <div class="role-title">Software Development Engineer II</div>
+                    <div class="company">Amazon — Fulfillment Technology</div>
+                </div>
+                <div class="period">Apr 2022 – Present</div>
+            </div>
+            <ul class="highlights">
+                <li>Designed a safety feature for the Staffing System used in warehouses which reduced the incidence of musculoskeletal injury</li>
+                <li>Contributed to backend and UI features (Java, AWS, React) with cross-functional partners</li>
+                <li>Participated in code reviews and testing; supported production operations and troubleshooting</li>
+                <li>Worked on distributed systems and event-driven architecture</li>
+                <li>Applied 3+ years of AWS/Amazon stack experience to build reliable, scalable systems</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <div class="role-title">Full Stack Software Developer</div>
+                    <div class="company">NoviFlow Inc. — CyberMapper (SDN/Cybersecurity)</div>
+                </div>
+                <div class="period">Jan 2021 – Apr 2022</div>
+            </div>
+            <ul class="highlights">
+                <li>Worked on CyberMapper (SDN software) in a cybersecurity/SDN context</li>
+                <li>Contributed across the stack (C++/React); collaborated on performance and responsiveness improvements</li>
+                <li>Developed software for Software-Defined Networking and cybersecurity applications</li>
+                <li>Applied low-level programming skills in C++ for network performance optimization</li>
+                <li>Collaborated with team on system architecture and implementation</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <div class="role-title">Team Leader</div>
+                    <div class="company">PeaceBird — McGill University (Hult Prize)</div>
+                </div>
+                <div class="period">Sep 2017 – Sep 2018</div>
+            </div>
+            <ul class="highlights">
+                <li>Led a team of six engineers to solve landmine clearance for the Hult Prize 2018</li>
+                <li>Reached regional finals, top 300 out of 100,000 teams worldwide</li>
+                <li>Researched and developed drone-based landmine clearance technology</li>
+                <li>Demonstrated leadership, project management, and innovative problem-solving skills</li>
+                <li>Coordinated cross-functional team efforts and presented solutions to judges</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        <div class="education-item">
+            <div class="education-header">
+                <div>
+                    <div class="role-title">B.Eng., Computer Engineering</div>
+                    <div class="company">McGill University</div>
+                </div>
+                <div class="period">Feb 2021</div>
+            </div>
+            <ul class="highlights">
+                <li>CGPA: 3.5/4.0</li>
+                <li>Diploma of Collegial Studies (DEC), Honors Pure & Applied Sciences (2016)</li>
+                <li>Relevant Courses: Machine Learning, Computer Vision, AI, Distributed Systems, Cybersecurity</li>
+                <li>Strong foundation in parallel computing, AI/ML, and system design</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Selected Projects</h2>
+        
+        <div class="project-item">
+            <div class="project-header">
+                <div class="role-title">Parallel Computing using CUDA</div>
+                <div class="period">Nov 2019 – Dec 2019</div>
+            </div>
+            <ul class="highlights">
+                <li>Implemented Rectify, Max Pooling, Convolution and Matrix Inversion operations using CUDA C</li>
+                <li>Parallelized the alpha-beta pruning algorithm used in board games to speedup game</li>
+            </ul>
+            <div class="project-tech">Technologies: C++, CUDA, Parallel Computing, Matrix Operations</div>
+        </div>
+
+        <div class="project-item">
+            <div class="project-header">
+                <div class="role-title">Blind Source Separation</div>
+                <div class="period">2019</div>
+            </div>
+            <ul class="highlights">
+                <li>Convert an audio signal into digital signal using MATLAB</li>
+                <li>Create C functions to mix signals, and to implement BSS (blind source separation): From a mixed signal, separate its components</li>
+            </ul>
+            <div class="project-tech">Technologies: C, MATLAB, Signal Processing, Audio Analysis</div>
+        </div>
+
+        <div class="project-item">
+            <div class="project-header">
+                <div class="role-title">Face Detection Application</div>
+                <div class="period">2019</div>
+            </div>
+            <ul class="highlights">
+                <li>Build an application which uses AI to detect faces in images and correctly tag images</li>
+            </ul>
+            <div class="project-tech">Technologies: Python, AI/ML, Computer Vision, Image Processing</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Achievements</h2>
+        <ul class="highlights">
+            <li>Designed safety features reducing musculoskeletal injury in Amazon warehouses</li>
+            <li>Led team to Hult Prize regional finals (top 300 out of 100,000 teams worldwide)</li>
+            <li>Built distributed systems and event-driven architectures at Amazon scale</li>
+            <li>Developed AI/ML applications including face detection and parallel computing</li>
+            <li>Applied 3+ years of AWS/Amazon stack experience in production environments</li>
+            <li>Demonstrated expertise in C++, Java, Python, and modern web technologies</li>
+        </ul>
+    </div>
+</body>
+</html>
