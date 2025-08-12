@@ -1,52 +1,53 @@
 {
   "hero": {
     "name": "Edris Jebran",
-    "tagline": "Senior Software Engineer • AI/ML Specialist • Full-Stack Architect",
+    "tagline": "Software Development Engineer II • AI/ML Enthusiast • Full-Stack Developer",
     "cta": "Explore Portfolio"
   },
   "about": {
-    "summary": "I architect and build enterprise-scale software systems that handle millions of users. Passionate about AI/ML, distributed systems, and creating innovative solutions that solve real-world problems. I lead technical teams, mentor engineers, and drive engineering excellence.",
+    "summary": "Software Development Engineer II with 4+ years' experience building reliable, scalable systems. Passionate about AI/ML, distributed systems, and creating innovative solutions that solve real-world problems. Strengths in distributed/event-driven design, clean code, and production ownership.",
     "location": "Toronto, Canada",
     "skills": [
-      "React/Next.js", "Node.js/TypeScript", "Python/AI/ML", "AWS/Azure/GCP", 
-      "Docker/Kubernetes", "Microservices", "GraphQL", "PostgreSQL/MongoDB", 
-      "Redis/Elasticsearch", "System Design", "Team Leadership", "Agile/Scrum"
+      "Java", "Python", "C/C++", "JavaScript", "React", "Django", "PyTorch",
+      "AWS (Lambda, API Gateway, SQS, SNS, DynamoDB, S3, Fargate)", 
+      "SQL", "OpenCV", "CUDA", "Git", "CI/CD", "Linux/UNIX"
     ]
   },
   "experience": [
     {
-      "role": "Senior Software Engineer",
+      "role": "Software Development Engineer II",
       "company": "Amazon — Fulfillment Technology",
       "period": "Apr 2022 — Present",
       "highlights": [
-        "Led development of microservices handling 50M+ daily requests with 99.99% uptime",
-        "Architected and implemented real-time inventory management system reducing latency by 60%",
-        "Mentored 8 junior engineers and established engineering best practices across 3 teams",
-        "Optimized database queries and caching strategies, improving system performance by 40%",
-        "Designed and deployed CI/CD pipelines reducing deployment time from 2 hours to 15 minutes"
+        "Designed a safety feature for the Staffing System used in warehouses which reduced the incidence of musculoskeletal injury",
+        "Contributed to backend and UI features (Java, AWS, React) with cross-functional partners",
+        "Participated in code reviews and testing. Supported production operations and troubleshooting",
+        "Worked on distributed systems and event-driven architecture",
+        "Applied 3+ years of AWS/Amazon stack experience to build reliable, scalable systems"
       ]
     },
     {
-      "role": "Software Engineer",
-      "company": "Tech Startup — E-commerce Platform",
-      "period": "Jan 2021 — Mar 2022",
+      "role": "Full Stack Software Developer",
+      "company": "NoviFlow Inc. — CyberMapper (SDN/Cybersecurity)",
+      "period": "Jan 2021 — Apr 2022",
       "highlights": [
-        "Built scalable REST APIs serving 10M+ monthly users with sub-100ms response times",
-        "Implemented real-time analytics dashboard processing 1TB+ data daily",
-        "Reduced AWS costs by 35% through infrastructure optimization and auto-scaling",
-        "Led migration from monolithic to microservices architecture",
-        "Established automated testing achieving 95% code coverage"
+        "Worked on CyberMapper (SDN software) in a cybersecurity/SDN context",
+        "Contributed across the stack (C++/React); collaborated on performance and responsiveness improvements",
+        "Developed software for Software-Defined Networking and cybersecurity applications",
+        "Applied low-level programming skills in C++ for network performance optimization",
+        "Collaborated with team on system architecture and implementation"
       ]
     },
     {
-      "role": "Full-Stack Developer",
-      "company": "Digital Agency — Client Projects",
-      "period": "Jun 2020 — Dec 2020",
+      "role": "Team Leader",
+      "company": "PeaceBird — McGill University (Hult Prize)",
+      "period": "Sep 2017 — Sep 2018",
       "highlights": [
-        "Developed 15+ client websites with modern React/Node.js stack",
-        "Implemented responsive designs and optimized for 100% Lighthouse scores",
-        "Built custom CMS solutions reducing content management time by 70%",
-        "Integrated third-party APIs and payment gateways for e-commerce solutions"
+        "Led a team of six engineers to solve landmine clearance for the Hult Prize 2018",
+        "Reached regional finals, top 300 out of 100,000 teams worldwide",
+        "Researched and developed drone-based landmine clearance technology",
+        "Demonstrated leadership, project management, and innovative problem-solving skills",
+        "Coordinated cross-functional team efforts and presented solutions to judges"
       ]
     }
   ],
@@ -54,64 +55,69 @@
     {
       "degree": "B.Eng., Computer Engineering",
       "school": "McGill University",
-      "period": "2017 — 2021",
+      "period": "Feb 2021",
       "details": [
-        "GPA: 3.8/4.0 (Dean's List: 3 years)",
+        "CGPA: 3.5/4.0",
         "Relevant Courses: Machine Learning, Computer Vision, AI, Distributed Systems, Cybersecurity",
-        "Capstone Project: AI-powered inventory optimization system",
-        "Research Assistant: Computer Vision lab working on object detection algorithms"
+        "Diploma of Collegial Studies (DEC), Honors Pure & Applied Sciences (2016)",
+        "Strong foundation in parallel computing, AI/ML, and system design"
       ]
     }
   ],
   "hobbies": [
     {
       "name": "Brazilian Jiu-Jitsu",
-      "desc": "Purple belt competitor. Teaches discipline, problem-solving under pressure, and strategic thinking. Competed in 10+ tournaments with podium finishes."
+      "desc": "Blue belt practitioner. Teaches discipline, problem-solving under pressure, and strategic thinking. Regular training focusing on technique and continuous improvement."
     },
     {
-      "name": "AI/ML Research",
-      "desc": "Active contributor to open-source ML projects. Building personal AI models for computer vision and natural language processing. Published 2 technical blog posts on ML system design."
+      "name": "AI/ML Enthusiast",
+      "desc": "Passionate about AI/ML technologies and their applications. Completed personal projects in computer vision, parallel computing, and signal processing. Always learning and exploring new developments in the field."
     },
     {
       "name": "Fitness & Wellness",
-      "desc": "Strength training and conditioning. Maintaining peak physical and mental performance. Certified personal trainer helping others achieve their fitness goals."
+      "desc": "Strength training and conditioning. Maintaining peak physical and mental performance. Enjoys staying active and healthy through regular exercise routines."
     }
   ],
   "cv": {
     "downloadUrl": "/cv/edris-jebran-cv.pdf"
   },
   "achievements": [
-    "Led cross-functional team of 8 engineers to deliver critical feature 2 weeks ahead of schedule",
-    "Reduced system downtime by 99.9% through improved monitoring and alerting",
-    "Mentored 5 junior developers to senior level within 18 months",
-    "Published 3 technical articles on system design and AI/ML best practices",
-    "Speaker at 2 tech conferences on microservices architecture and performance optimization",
-    "Open source contributor with 500+ stars across personal projects"
+    "Designed safety features reducing musculoskeletal injury in Amazon warehouses",
+    "Led team to Hult Prize regional finals (top 300 out of 100,000 teams worldwide)",
+    "Built distributed systems and event-driven architectures at Amazon scale",
+    "Developed AI/ML applications including face detection and parallel computing",
+    "Applied 3+ years of AWS/Amazon stack experience in production environments",
+    "Demonstrated expertise in C++, Java, Python, and modern web technologies"
   ],
   "projects": [
     {
-      "name": "AI-Powered Analytics Platform",
-      "description": "Real-time data processing system using Python, TensorFlow, and AWS",
-      "tech": ["Python", "TensorFlow", "AWS", "Docker", "React"],
-      "impact": "Processes 1M+ data points daily with 99.9% accuracy"
+      "name": "Parallel Computing using CUDA",
+      "description": "Implemented Rectify, Max Pooling, Convolution and Matrix Inversion operations using CUDA C",
+      "tech": ["C++", "CUDA", "Parallel Computing", "Matrix Operations"],
+      "impact": "Parallelized alpha-beta pruning algorithm for board games, achieving significant speedup"
     },
     {
-      "name": "Microservices E-commerce API",
-      "description": "Scalable backend system handling 10K+ concurrent users",
-      "tech": ["Node.js", "TypeScript", "PostgreSQL", "Redis", "Kubernetes"],
-      "impact": "Reduced API response time by 60% and improved uptime to 99.99%"
+      "name": "Blind Source Separation",
+      "description": "Convert audio signals to digital and implement BSS to separate mixed signal components",
+      "tech": ["C", "MATLAB", "Signal Processing", "Audio Analysis"],
+      "impact": "Successfully separated mixed audio signals into their original components"
     },
     {
-      "name": "Computer Vision Object Detector",
-      "description": "Custom YOLO model for real-time object detection",
-      "tech": ["Python", "OpenCV", "PyTorch", "TensorRT", "Docker"],
-      "impact": "Achieved 95% accuracy with 30fps real-time processing"
+      "name": "Face Detection Application",
+      "description": "AI-powered application to detect faces in images and correctly tag them",
+      "tech": ["Python", "AI/ML", "Computer Vision", "Image Processing"],
+      "impact": "Demonstrated practical application of AI/ML in computer vision"
     }
   ],
   "certifications": [
-    "AWS Certified Solutions Architect",
-    "Google Cloud Professional Developer",
-    "Certified Kubernetes Administrator (CKA)",
-    "Microsoft Azure Developer Associate"
-  ]
+    "AWS Certified Solutions Architect (in progress)",
+    "McGill University Computer Engineering Degree",
+    "Hult Prize Regional Finalist",
+    "Parallel Computing & CUDA Programming"
+  ],
+  "socials": {
+    "email": "mailto:edrisjebran@hotmail.com",
+    "linkedin": "https://linkedin.com/in/edrisjebran",
+    "github": "https://github.com/Edris-Jebran"
+  }
 }

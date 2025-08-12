@@ -1,6 +1,6 @@
 import React, { Suspense, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Element } from 'react-scroll'
+import { Element, Link } from 'react-scroll'
 import { Canvas } from '@react-three/fiber'
 import { Stars, Grid, OrbitControls } from '@react-three/drei'
 import useParallax from '../hooks/useParallax'
@@ -94,13 +94,26 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <motion.button
+              <Link to="about" smooth={true} duration={800}>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn-sci-fi pulse-glow cursor-pointer"
+                >
+                  {content.hero.cta}
+                </motion.button>
+              </Link>
+              
+              <motion.a
+                href="/resume.html"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-sci-fi pulse-glow"
+                className="btn-sci-fi border-green-500 hover:border-green-400 text-green-400 hover:text-green-300 cursor-pointer"
               >
-                {content.hero.cta}
-              </motion.button>
+                View CV
+              </motion.a>
               
               <motion.div
                 initial={{ opacity: 0 }}

@@ -23,7 +23,6 @@ export default function NavBar() {
             <Link to="about" smooth={true} duration={500} className="nav-link cursor-pointer">About</Link>
             <Link to="experience" smooth={true} duration={500} className="nav-link cursor-pointer">Experience</Link>
             <Link to="projects" smooth={true} duration={500} className="nav-link cursor-pointer">Projects</Link>
-            <Link to="certifications" smooth={true} duration={500} className="nav-link cursor-pointer">Certifications</Link>
             <Link to="hobbies" smooth={true} duration={500} className="nav-link cursor-pointer">Hobbies</Link>
             <Link to="contact" smooth={true} duration={500} className="nav-link cursor-pointer">Contact</Link>
           </div>
