@@ -252,7 +252,6 @@ export default function HeroSection() {
           className="mt-10 flex gap-4"
         >
           <a href="#experience" className="btn-sci-fi px-5 py-3 rounded-lg bg-primary/20 border border-primary/40 hover:shadow-neon transition pulse-glow">Explore</a>
-          {/* <a href={content.cv.downloadUrl} className="btn-sci-fi px-5 py-3 rounded-lg border border-white/20 hover:border-primary/60 transition">Download CV</a> */}
         </motion.div>
       </div>
     </section>

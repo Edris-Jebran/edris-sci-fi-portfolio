@@ -12,15 +12,15 @@ export default function App() {
   return (
     <div className="min-h-screen text-slate-100">
       <main id="main" role="main">
-      <NavBar />
-      <HeroSection />
-      <AboutSection />
-      <ExperienceTimeline />
-      <EducationTimeline />
-      <HobbiesGrid />
-      <ContactSection />
-      <Footer />
-          </main>
+        <NavBar />
+        <HeroSection />
+        <AboutSection />
+        <ExperienceTimeline />
+        <EducationTimeline />
+        <HobbiesGrid />
+        <ContactSection />
+        <Footer />
+      </main>
     </div>
   )
 }
