@@ -105,7 +105,7 @@ export default function HeroSection() {
               </Link>
               
               <motion.a
-                href="/resume.html"
+                href="https://edrisjebran.github.io/edris-sci-fi-portfolio/resume.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
