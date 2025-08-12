@@ -4,6 +4,8 @@ import HeroSection from './sections/HeroSection'
 import AboutSection from './sections/AboutSection'
 import ExperienceTimeline from './sections/ExperienceTimeline'
 import EducationTimeline from './sections/EducationTimeline'
+import ProjectsSection from './sections/ProjectsSection'
+import CertificationsSection from './sections/CertificationsSection'
 import HobbiesGrid from './sections/HobbiesGrid'
 import ContactSection from './sections/ContactSection'
 import Footer from './components/Footer'
@@ -17,6 +19,8 @@ export default function App() {
         <AboutSection />
         <ExperienceTimeline />
         <EducationTimeline />
+        <ProjectsSection />
+        <CertificationsSection />
         <HobbiesGrid />
         <ContactSection />
         <Footer />

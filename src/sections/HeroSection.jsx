@@ -1,259 +1,153 @@
-import React, { Suspense, useMemo, useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Stars } from '@react-three/drei'
+import React, { Suspense, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import content from '../data/siteContent.json'
+import { Element } from 'react-scroll'
+import { Canvas } from '@react-three/fiber'
+import { Stars, Grid, OrbitControls } from '@react-three/drei'
 import useParallax from '../hooks/useParallax'
+import content from '../data/siteContent.json'
 
-// Error boundary for Three.js components
-class ThreeJSErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: false }
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true }
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.warn('Three.js error caught:', error)
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return null // Fallback to just stars
-    }
-    return this.props.children
-  }
-}
-
-function Starfield() {
-  const prefersReduced =
-    typeof window !== 'undefined' &&
-    window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-  if (prefersReduced) return null
-  return (
-    <Canvas camera={{ position: [0, 0, 1] }} className="absolute inset-0 -z-10">
-      <Stars radius={100} depth={50} count={window.innerWidth < 640 ? 1200 : 3000} factor={4} saturation={0} fade speed={1} />
-    </Canvas>
-  )
-}
-
-// Interactive holographic sphere with mouse tracking and rotation
+// Enhanced 3D Components
 function HoloSphere() {
-  const meshRef = useRef()
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
-  const [hovered, setHovered] = React.useState(false)
-
-  // Handle mouse movement
-  React.useEffect(() => {
-    const handleMouseMove = (event) => {
-      const { clientX, clientY } = event
-      const { innerWidth, innerHeight } = window
-      setMousePosition({
-        x: (clientX / innerWidth) * 2 - 1,
-        y: -(clientY / innerHeight) * 2 + 1
-      })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
-  // Animate sphere rotation and effects
-  useFrame((state) => {
-    if (meshRef.current) {
-      // Continuous rotation (slower)
-      meshRef.current.rotation.x += 0.002
-      meshRef.current.rotation.y += 0.005
-      
-      // Mouse-responsive rotation (much more subtle)
-      meshRef.current.rotation.x += mousePosition.y * 0.05
-      meshRef.current.rotation.y += mousePosition.x * 0.05
-      
-      // Pulse effect when hovered
-      if (hovered) {
-        meshRef.current.scale.setScalar(1.15)
-      } else {
-        meshRef.current.scale.setScalar(1)
-      }
-    }
-  })
-
   return (
-    <group>
-      {/* Glow effect */}
-      <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[0.85, 16, 16]} />
-        <meshBasicMaterial 
-          color="#00F0FF" 
-          transparent 
-          opacity={hovered ? 0.2 : 0.05}
-        />
-      </mesh>
-      
-      {/* Main sphere */}
-      <mesh 
-        ref={meshRef}
-        position={[0, 0, 0]}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-      >
-        <sphereGeometry args={[0.75, 32, 32]} />
-        <meshStandardMaterial
-          color={hovered ? "#00FFFF" : "#00F0FF"}
-          roughness={0.2}
-          metalness={0.9}
-          emissive={hovered ? "#00FFFF" : "#00F0FF"}
-          emissiveIntensity={hovered ? 0.6 : 0.2}
-          wireframe
-        />
-      </mesh>
-    </group>
-  )
-}
-
-// Interactive grid horizon that responds to mouse
-function GridHorizon() {
-  const meshRef = useRef()
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
-
-  React.useEffect(() => {
-    const handleMouseMove = (event) => {
-      const { clientX, clientY } = event
-      const { innerWidth, innerHeight } = window
-      setMousePosition({
-        x: (clientX / innerWidth) * 2 - 1,
-        y: -(clientY / innerHeight) * 2 + 1
-      })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
-  useFrame(() => {
-    if (meshRef.current) {
-      // Subtle grid movement based on mouse
-      meshRef.current.rotation.x = -Math.PI / 2.2 + mousePosition.y * 0.1
-      meshRef.current.rotation.z = mousePosition.x * 0.05
-    }
-  })
-
-  return (
-    <mesh ref={meshRef} rotation={[ -Math.PI / 2.2, 0, 0 ]} position={[0, -0.9, -1]}>
-      <planeGeometry args={[8, 6, 32, 32]} />
-      <meshBasicMaterial color="#0A1E2E" wireframe />
+    <mesh>
+      <sphereGeometry args={[0.5, 32, 32]} />
+      <meshStandardMaterial
+        color="#00F0FF"
+        emissive="#00F0FF"
+        emissiveIntensity={0.3}
+        transparent
+        opacity={0.8}
+        wireframe
+      />
     </mesh>
   )
 }
 
-// Floating particles around the sphere
-function Particles() {
-  const particlesRef = useRef()
-  const particles = useMemo(() => {
-    const temp = []
-    for (let i = 0; i < 50; i++) {
-      const time = Math.random() * 100
-      const factor = Math.random() * 20 + 10
-      const speed = Math.random() * 0.01
-      const x = Math.random() * 2 - 1
-      const y = Math.random() * 2 - 1
-      const z = Math.random() * 2 - 1
-      temp.push({ time, factor, speed, x, y, z })
-    }
-    return temp
-  }, [])
-
-  useFrame((state) => {
-    if (particlesRef.current) {
-      particles.forEach((particle, i) => {
-        particle.time += particle.speed
-        const mesh = particlesRef.current.children[i]
-        if (mesh) {
-          mesh.position.x = Math.sin(particle.time) * particle.factor * particle.x
-          mesh.position.y = Math.cos(particle.time) * particle.factor * particle.y
-          mesh.position.z = Math.sin(particle.time) * particle.factor * particle.z
-        }
-      })
-    }
-  })
-
+function Starfield() {
   return (
-    <group ref={particlesRef}>
-      {particles.map((particle, i) => (
-        <mesh key={i} position={[particle.x, particle.y, particle.z]}>
-          <sphereGeometry args={[0.02, 8, 8]} />
-          <meshBasicMaterial color="#00F0FF" transparent opacity={0.6} />
-        </mesh>
-      ))}
-    </group>
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="stars"></div>
+      <div className="stars2"></div>
+      <div className="stars3"></div>
+    </div>
   )
 }
 
 export default function HeroSection() {
   const offset = useParallax(20)
   const prefersReduced = useMemo(() => {
-    return (
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    )
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches
   }, [])
 
   return (
-    <section className="relative h-[85vh] flex items-center overflow-hidden">
-      {/* Particle field background */}
-      <div className="particle-field"></div>
-      
-      <Suspense fallback={null}>
+    <Element name="hero">
+      <section className="relative h-[85vh] flex items-center overflow-hidden">
+        {/* Enhanced particle field background */}
+        <div className="particle-field"></div>
+        
+        {/* Enhanced starfield */}
         <Starfield />
-      </Suspense>
 
-      {/* r3f holographic scene */}
-      {!prefersReduced && (
-        <ThreeJSErrorBoundary>
-          <Canvas camera={{ position: [0, 0, 2.2] }} className="absolute inset-0 -z-10">
-            <ambientLight intensity={0.6} />
-            <directionalLight position={[2, 2, 3]} intensity={0.8} />
-            <HoloSphere />
-            <GridHorizon />
-            <Particles />
-          </Canvas>
-        </ThreeJSErrorBoundary>
-      )}
+        {/* 3D Scene */}
+        {!prefersReduced && (
+          <div className="absolute inset-0 -z-10">
+            <Canvas camera={{ position: [0, 0, 2.2] }}>
+              <ambientLight intensity={0.6} />
+              <directionalLight position={[2, 2, 3]} intensity={0.8} />
+              <HoloSphere />
+              <Grid args={[10, 10]} cellSize={1} cellThickness={0.5} cellColor="#00F0FF" sectionSize={3} sectionThickness={1} sectionColor="#A020F0" fadeDistance={25} fadeStrength={1} followCamera={false} infiniteGrid={true} />
+              <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+              <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+            </Canvas>
+          </div>
+        )}
 
-      {/* UI content */}
-      <div className="section pt-24" style={{ transform: `translate3d(${offset.x}px, ${offset.y}px, 0)` }}>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="font-display text-4xl sm:text-6xl font-bold holographic"
-        >
-          {content.hero.name}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1 }}
-          className="mt-4 text-lg text-slate-300 float-animation"
-        >
-          {content.hero.tagline}
-        </motion.p>
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ transform: `translateY(${offset}px)` }}
+          >
+            <motion.h1
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="font-display text-5xl sm:text-7xl font-bold holographic mb-6"
+            >
+              {content.hero.name}
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl sm:text-2xl text-slate-300 mb-8 float-gentle"
+            >
+              {content.hero.tagline}
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-sci-fi pulse-glow"
+              >
+                {content.hero.cta}
+              </motion.button>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1 }}
+                className="flex space-x-4"
+              >
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0 }}
+                  className="w-2 h-2 bg-primary rounded-full"
+                />
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+                  className="w-2 h-2 bg-purple-500 rounded-full"
+                />
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+                  className="w-2 h-2 bg-green-500 rounded-full"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
-          transition={{ duration: 1.0, delay: 0.2 }} 
-          className="mt-10 flex gap-4"
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <a href="#experience" className="btn-sci-fi px-5 py-3 rounded-lg bg-primary/20 border border-primary/40 hover:shadow-neon transition pulse-glow">Explore</a>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-primary rounded-full flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-1 h-3 bg-primary rounded-full mt-2"
+            />
+          </motion.div>
         </motion.div>
-      </div>
-    </section>
+      </section>
+    </Element>
   )
 }
