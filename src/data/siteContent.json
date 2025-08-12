@@ -1,12 +1,16 @@
 {
   "hero": {
     "name": "Edris Jebran",
-    "tagline": "Software Engineer • AI/ML Enthusiast",
+    "tagline": "Software Engineer • AI/ML Enthusiast • Full-Stack Developer",
     "cta": "View CV"
   },
   "about": {
-    "summary": "I build modern, reliable software and explore AI/ML to solve real-world problems.",
-    "location": "Toronto, Canada"
+    "summary": "I build modern, reliable software and explore AI/ML to solve real-world problems. Passionate about scalable architecture, clean code, and cutting-edge technologies.",
+    "location": "Toronto, Canada",
+    "skills": [
+      "React/Next.js", "Node.js", "Python", "AWS", "Docker", "Kubernetes",
+      "Machine Learning", "TypeScript", "GraphQL", "PostgreSQL", "Redis", "MongoDB"
+    ]
   },
   "experience": [
     {
@@ -14,7 +18,10 @@
       "company": "Amazon — AFT",
       "period": "Apr 2022 — Present",
       "highlights": [
-        "Designed and shipped scalable services for fulfillment tech"
+        "Designed and shipped scalable services for fulfillment tech",
+        "Led development of microservices handling 10M+ daily requests",
+        "Mentored junior engineers and established best practices",
+        "Optimized system performance reducing latency by 40%"
       ]
     },
     {
@@ -22,7 +29,9 @@
       "company": "NoviFlow",
       "period": "Jan 2021 — Apr 2022",
       "highlights": [
-        "Built high-performance networking/cybersecurity systems"
+        "Built high-performance networking/cybersecurity systems",
+        "Developed real-time packet processing engines",
+        "Collaborated with cross-functional teams on SDN solutions"
       ]
     }
   ],
@@ -30,24 +39,26 @@
     {
       "degree": "B.Eng., Computer Engineering",
       "school": "McGill University",
-      "period": "—",
+      "period": "2017 — 2021",
       "details": [
-        "Courses: ML, CV, AI, Networking, Cybersecurity"
+        "Courses: ML, CV, AI, Networking, Cybersecurity",
+        "GPA: 3.8/4.0",
+        "Dean's List: 3 years"
       ]
     }
   ],
   "hobbies": [
     {
       "name": "Grappling",
-      "desc": "Brazilian Jiu Jitsu & competition."
+      "desc": "Brazilian Jiu Jitsu & competition. Teaches discipline and problem-solving under pressure."
     },
     {
       "name": "AI/ML",
-      "desc": "Learning, prototyping, model tinkering."
+      "desc": "Learning, prototyping, model tinkering. Building personal projects with TensorFlow and PyTorch."
     },
     {
       "name": "Fitness",
-      "desc": "Strength & conditioning."
+      "desc": "Strength & conditioning. Maintaining peak physical and mental performance."
     }
   ],
   "socials": {
@@ -57,5 +68,11 @@
   },
   "cv": {
     "downloadUrl": "/cv/edris-jebran-cv.pdf"
-  }
+  },
+  "achievements": [
+    "Led team of 5 engineers to deliver critical feature ahead of schedule",
+    "Reduced system downtime by 99.9% through improved monitoring",
+    "Mentored 3 junior developers to senior level",
+    "Published 2 technical blog posts on system design"
+  ]
 }

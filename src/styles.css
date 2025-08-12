@@ -4,6 +4,10 @@
 
 :root {
   --bg: #050B16;
+  --neon-blue: #00F0FF;
+  --neon-purple: #A020F0;
+  --neon-green: #00FF88;
+  --dark-space: #0A0F1C;
 }
 
 html, body, #root { height: 100%; }
@@ -12,22 +16,32 @@ html, body, #root { height: 100%; }
 
 /* Sci-fi glow helpers */
 .glow { text-shadow: 0 0 8px rgba(0,240,255,0.9); }
+.glow-purple { text-shadow: 0 0 8px rgba(160,32,240,0.9); }
+.glow-green { text-shadow: 0 0 8px rgba(0,255,136,0.9); }
 .card { background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; }
 .section { max-width: 72rem; margin: 0 auto; padding: 5rem 1.5rem; }
 
-/* Futuristic scanline overlay (subtle) */
+/* Advanced scanline overlay with multiple layers */
 .scanlines::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 240, 255, 0.02),
-    rgba(0, 240, 255, 0.02) 2px,
-    transparent 2px,
-    transparent 4px
-  );
+  background: 
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 240, 255, 0.02),
+      rgba(0, 240, 255, 0.02) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(160, 32, 240, 0.01),
+      rgba(160, 32, 240, 0.01) 1px,
+      transparent 1px,
+      transparent 3px
+    );
 }
 
 /* Accent link focus ring */
@@ -43,6 +57,7 @@ a:focus-visible { outline: 2px solid theme('colors.primary'); outline-offset: 2p
 .btn-sci-fi {
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .btn-sci-fi::before {
@@ -58,6 +73,11 @@ a:focus-visible { outline: 2px solid theme('colors.primary'); outline-offset: 2p
 
 .btn-sci-fi:hover::before {
   left: 100%;
+}
+
+.btn-sci-fi:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,240,255,0.3);
 }
 
 /* Enhanced card hover effects */
@@ -88,7 +108,7 @@ a:focus-visible { outline: 2px solid theme('colors.primary'); outline-offset: 2p
   border-color: rgba(0,240,255,0.3);
 }
 
-/* Typing animation for hero text */
+/* Advanced typing animation for hero text */
 .typing-animation {
   overflow: hidden;
   border-right: 2px solid #00F0FF;
@@ -116,7 +136,7 @@ a:focus-visible { outline: 2px solid theme('colors.primary'); outline-offset: 2p
   animation: float 3s ease-in-out infinite;
 }
 
-/* Pulse glow effect */
+/* Enhanced pulse glow effect */
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 5px rgba(0,240,255,0.5); }
   50% { box-shadow: 0 0 20px rgba(0,240,255,0.8); }
@@ -126,7 +146,7 @@ a:focus-visible { outline: 2px solid theme('colors.primary'); outline-offset: 2p
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Enhanced navigation hover effects */
+/* Advanced navigation hover effects */
 .nav-link {
   position: relative;
   transition: color 0.3s ease;
@@ -147,11 +167,131 @@ a:focus-visible { outline: 2px solid theme('colors.primary'); outline-offset: 2p
   width: 100%;
 }
 
-/* Grid background effect */
+/* Advanced grid background effect */
 .grid-bg {
   background-image: 
     linear-gradient(rgba(0,240,255,0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,240,255,0.1) 1px, transparent 1px);
   background-size: 20px 20px;
   background-position: center center;
+}
+
+/* Matrix rain effect */
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.1;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: matrix-fall 20s linear infinite;
+}
+
+@keyframes matrix-fall {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Holographic text effect */
+.holographic {
+  background: linear-gradient(45deg, #00F0FF, #A020F0, #00FF88, #00F0FF);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: holographic-shift 3s ease-in-out infinite;
+}
+
+@keyframes holographic-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Skill bar animations */
+.skill-bar {
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00F0FF, #A020F0);
+  border-radius: 10px;
+  transition: width 1.5s ease-in-out;
+  position: relative;
+}
+
+.skill-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: skill-shine 2s ease-in-out infinite;
+}
+
+@keyframes skill-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Particle field background */
+.particle-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 25% 25%, rgba(0,240,255,0.1) 1px, transparent 1px),
+                    radial-gradient(circle at 75% 75%, rgba(160,32,240,0.1) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px;
+  animation: particle-drift 30s linear infinite;
+}
+
+@keyframes particle-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
+}
+
+/* Enhanced section transitions */
+.section-transition {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.section-transition.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Professional skill tags */
+.skill-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  margin: 0.25rem;
+  background: rgba(0,240,255,0.1);
+  border: 1px solid rgba(0,240,255,0.3);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  color: #00F0FF;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(0,240,255,0.2);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,240,255,0.3);
 }

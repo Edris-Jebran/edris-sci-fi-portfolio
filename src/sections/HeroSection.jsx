@@ -206,6 +206,9 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-[85vh] flex items-center overflow-hidden">
+      {/* Particle field background */}
+      <div className="particle-field"></div>
+      
       <Suspense fallback={null}>
         <Starfield />
       </Suspense>
@@ -213,7 +216,7 @@ export default function HeroSection() {
       {/* r3f holographic scene */}
       {!prefersReduced && (
         <ThreeJSErrorBoundary>
-          <Canvas camera={{ position: [0, 0, 2.2] }} className="absolute inset-0 pointer-events-auto -z-10">
+          <Canvas camera={{ position: [0, 0, 2.2] }} className="absolute inset-0 -z-10">
             <ambientLight intensity={0.6} />
             <directionalLight position={[2, 2, 3]} intensity={0.8} />
             <HoloSphere />
@@ -229,7 +232,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="font-display text-4xl sm:text-6xl font-bold glow typing-animation"
+          className="font-display text-4xl sm:text-6xl font-bold holographic"
         >
           {content.hero.name}
         </motion.h1>
