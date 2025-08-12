@@ -104,17 +104,6 @@ export default function HeroSection() {
                 </motion.button>
               </Link>
               
-              <motion.a
-                href="https://edrisjebran.github.io/edris-sci-fi-portfolio/resume.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-sci-fi border-green-500 hover:border-green-400 text-green-400 hover:text-green-300 cursor-pointer"
-              >
-                View CV
-              </motion.a>
-              
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
